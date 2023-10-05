@@ -25,6 +25,7 @@ classifiers = [
   "Programming Language :: Python :: Implementation :: PyPy",
 ]
 dependencies = [
+  "typer",
   "tomlkit",
 ]
 
@@ -33,11 +34,11 @@ Documentation = "https://github.com/ketozhang/add-pyproject#readme"
 Issues = "https://github.com/ketozhang/add-pyproject/issues"
 Source = "https://github.com/ketozhang/add-pyproject"
 
-[project.scripts]
-add = "add_pyproject.cli:add_pyproject"
-
 [tool.hatch.version]
 path = "add_pyproject/__about__.py"
+
+[tool.hatch.envs.default.scripts]
+add = "python -m add_pyproject {args}"
 
 [tool.black]
 target-version = ["py37"]
