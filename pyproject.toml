@@ -38,6 +38,12 @@ path = "add_pyproject/__about__.py"
 
 [tool.hatch.envs.default.scripts]
 add = "python -m add_pyproject {args}"
+test = "pytest {args}"
+
+[tool.hatch.envs.default]
+dependencies = [
+  "pytest",
+]
 
 [tool.black]
 target-version = ["py37"]
