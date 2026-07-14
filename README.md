@@ -8,9 +8,9 @@ A CLI that just adds python dependencies directly into `pyproject.toml`
 <table align="center">
 <tr>
 <td colspan="2">
-  
+
 ```console
-$ python -m add_pyproject numpy>=1.26
+$ add_pyproject "numpy>=1.26"
 ```
 
 </td>
@@ -24,7 +24,6 @@ Before
 [project]
 name = "mypackage"
 version = "0.1.0"
-dependencies = ["foobar"]
 ```
 
 </td>
@@ -36,7 +35,7 @@ After
 [project]
 name = "mypackage"
 version = "0.1.0"
-dependencies = ["foobar", "numpy>=1.26"]
+dependencies = ["numpy>=1.26"]
 ```
 </td>
 </tr>
@@ -44,22 +43,30 @@ dependencies = ["foobar", "numpy>=1.26"]
 
 -----
 
-## Installation
+## Integration
 
-```console
+### Pip
+
+```sh
 pip install add-pyproject
 ```
 
-## Integration
+### uvx
+```sh
+uvx add-pyproject
+```
+
+```sh
+uv tool install add-pyproject
+```
 
 ### Hatch
 
 ```toml
 [project]
-# ...
-dependencies = [
-  "foobar"
-]
+name = "mypackage"
+version = "0.1.0"
+dependencies = []
 
 [tool.hatch.envs.default]
 dependencies = [
@@ -71,7 +78,7 @@ add = "python -m add_pyproject {args}"
 ```
 
 ```console
-$ hatch run add numpy>=1.26
+$ hatch run add "numpy>=1.26"
 ```
 
 ## License
