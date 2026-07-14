@@ -3,11 +3,16 @@
 # SPDX-License-Identifier: MIT
 
 
-if __name__ == "__main__":
-    import sys
+import sys
 
-    import add_pyproject
+import add_pyproject
 
+
+def main():
     add_pyproject.main(sys.argv[1:])
+
+
+if __name__ == "__main__":
+    main()
 
 

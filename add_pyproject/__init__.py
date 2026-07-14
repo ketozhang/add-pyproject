@@ -2,10 +2,21 @@
 #
 # SPDX-License-Identifier: MIT
 import tomlkit
+from packaging.requirements import InvalidRequirement, Requirement
+
+
+def _validate(package: str) -> str:
+    try:
+        Requirement(package)
+    except InvalidRequirement as e:
+        raise ValueError(f"Invalid package: {package!r}") from e
+    return package
 
 
 def main(packages: list[str]):
     """Adds packages to pyproject.toml"""
+    packages = [_validate(p) for p in packages]
+
     with open("pyproject.toml", "rt", encoding="utf-8") as f:
         pyproject = tomlkit.load(f)
 
