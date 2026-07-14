@@ -3,16 +3,25 @@
 # SPDX-License-Identifier: MIT
 
 
-import sys
+import argparse
 
 import add_pyproject
 
 
 def main():
-    add_pyproject.main(sys.argv[1:])
+    parser = argparse.ArgumentParser(
+        prog="add-pyproject",
+        description="Add python dependencies to pyproject.toml",
+    )
+    parser.add_argument(
+        "packages",
+        nargs="+",
+        metavar="PACKAGE",
+        help="package requirement to add (e.g. 'requests>=2')",
+    )
+    args = parser.parse_args()
+    add_pyproject.main(args.packages)
 
 
 if __name__ == "__main__":
     main()
-
-
